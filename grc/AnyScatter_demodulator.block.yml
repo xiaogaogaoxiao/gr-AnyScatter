@@ -1,0 +1,22 @@
+id: AnyScatter_demodulator
+label: Demodulator
+category: '[AnyScatter]'
+templates:
+  imports: import AnyScatter
+  make: AnyScatter.demodulator(${num_antennas}, ${symbol_rate}, ${tag_rate})
+parameters:
+- id: num_antennas
+  label: Num Antennas
+  dtype: int
+- id: symbol_rate 
+  label: Symbol Rate
+  dtype: float
+- id: tag_rate
+  label: Tag Rate
+  dtype: float
+inputs:
+- label: in
+  domain: stream
+  dtype: complex
+  vlen: ${ int((num_antennas * (num_antennas + 1) / 2)) }
+file_format: 1

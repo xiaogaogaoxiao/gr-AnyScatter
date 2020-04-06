@@ -1,0 +1,27 @@
+id: AnyScatter_decimator
+label: Decimator
+category: '[AnyScatter]'
+templates:
+  imports: import AnyScatter
+  make: AnyScatter.decimator(${num_antennas}, ${sample_rate}, ${symbol_rate})
+parameters:
+- id: num_antennas
+  label: Num Antennas
+  dtype: int
+- id: sample_rate
+  label: Sample Rate
+  dtype: float
+- id: symbol_rate
+  label: Symbol Rate
+  dtype: float
+inputs:
+- label: in
+  domain: stream
+  dtype: complex
+  multiplicity: ${num_antennas}
+outputs:
+- label: out
+  domain: stream
+  dtype: complex
+  vlen: ${ int((num_antennas * (num_antennas + 1) / 2)) }
+file_format: 1
